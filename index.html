@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Be My Valentine 💖</title>
+
+<style>
+  .buttons {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      margin-top: 10px;
+      height: 80px;               /* reserve space */
+      align-items: center;
+  }
+
+    .card {
+        background: #fff;
+        padding: 30px;
+        border-radius: 24px;
+        width: 100%;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+        text-align: center;
+    }
+
+    .content {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    img {
+        width: 400px;
+        height: 480px;
+        border-radius: 16px;
+        object-fit: cover;
+        transition: all 0.3s ease;
+    }
+
+    h1 {
+        color: #ff4d88;
+        margin-bottom: 8px;
+        font-size: 60px;
+    }
+    
+    a {
+        color: #ff4d88;
+    }
+
+    .message {
+        font-size: 30px;
+        color: #666;
+        min-height: 42px;
+        margin-top: 20px;
+    }
+
+    .buttons {
+        display: flex;
+        gap: 14px;
+        justify-content: center;
+        margin-top: 10px;
+        height: 80px;
+        align-items: center;
+    }
+
+    button {
+        border: none;
+        border-radius: 999px;
+        padding: 12px 26px;
+        font-size: 30px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+  
+
+    #yesBtn {
+        background: #ff4d88;
+        color: white;
+        box-shadow: 0 8px 15px rgba(255,77,136,0.4);
+        transform-origin: center;
+        width: 240px;
+        max-width: 100%;
+        transition: width 0.3s ease, transform 0.3s ease;
+
+    }
+
+    #noBtn {
+        background: #f2f2f2;
+        color: #999;
+        width: 240px;
+        transition: all 0.3s ease;
+    }
+  #catImg {
+    margin-top : 20px;
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+    <h1>Will you be my Valentine? 💘</h1>
+
+        <img id="catImg" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOc1D7KFRX9rRA9RMJzPZGs8sCcF-8Zw0k3w&s" alt="Cat face">
+        <div class="message" id="message">
+            <a href="https://www.instagram.com/00thirt13n?igsh=cmQ5OXU1Mndzc3M3" target="_blanck">I'm</a> asking nicely… with my cutest face 🐱💖
+        </div>
+
+    <div class="buttons">
+        <button id="yesBtn">Yes 💖</button>
+        <button id="noBtn">No 🙈</button>
+    </div>
+</div>
+
+<audio id="happyCatAudio" preload="auto" loop>
+    <source src="https://www.myinstants.com/media/sounds/happy-happy-happy-cat.mp3" type="audio/mpeg">
+</audio>
+
+
+<script>
+    const steps = [
+        {
+            msg: "Oh… that’s okay 😺 I’ll just sit here quietly.",
+            img:"https://i.pinimg.com/736x/c2/80/8f/c2808fbb1f65fcf20451fc6e2c701e39.jpg"
+        },
+        {
+            msg: "Still smiling though 🐱✨",
+            img: "https://storage.googleapis.com/kagglesdsdata/datasets/4487470/8965865/cats_from_memes/cat%20%281008%29.jpg?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=databundle-worker-v2%40kaggle-161607.iam.gserviceaccount.com%2F20260205%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20260205T072416Z&X-Goog-Expires=345600&X-Goog-SignedHeaders=host&X-Goog-Signature=d398e06e5b2f556677c368137af35b10e95391372d575d169c43c78f893c67ca712d432cc0c5c1acc6b4ea75e69be0707ae259e26b244c603154ab129c9c886a8c5609eb26dd79eec6c90203055523ebf01fc5734c3a9770c18540f5d000cff345867cca3edef22f3789e32c25ad4ebaf3d87ac5217a7ed347f7926d4d4658d33de44c8be8c7558d31d5a07cbc84904edad1dce6591e6f7a02eab217e038e78a5d25f9c20620d6e3c5ba7280b48e14130b602fa99252f2f702b535ff660b9672a84a9605ff5f44ec0e3d1d6c47b974aa8214dcfba5f75dfd69a94bf9658aa48bef1e6c148f5c62a2448d7749d2ff4b97e6eafa01f6c92ef63b7649c86b036ceb"
+        },
+        {
+            msg: "I even practiced this look just for you 😽",
+            img: "https://upload.wikimedia.org/wikipedia/commons/0/04/So_happy_smiling_cat.jpg"
+        },
+        {
+             msg: "This is my hopeful face 💕👉👈",
+            img: "https://storage.googleapis.com/kagglesdsdata/datasets/4487470/8965865/cats_from_memes/cat%20%281012%29.jpg?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=databundle-worker-v2%40kaggle-161607.iam.gserviceaccount.com%2F20260205%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20260205T072416Z&X-Goog-Expires=345600&X-Goog-SignedHeaders=host&X-Goog-Signature=54cb70d7e323171a2050ba3f4ee98152f48853f6f90ebb66c2c9fdeea0211d7b1d56da014029f81b1bc9a4a16aa9900eeb68eabe7bef177dd01861e1ff8d6943a1b612e7023c6f31f4a5a591fb0ee64781404cbdd1d62b8eb558fdf572e5b3b2bb53e54696b768655272054ffa84d547a2adf969bc8981bc5cfabfd4b5d939f7ba64b5346ad5e7b6ac30d83d86bb2162606a09f18cd23d400f01f4c35122ee6486173689bd4b2cb99f0a2c5e7f99e0aae2dc3eaa3fde17b5577804284d80ce68a652eeda93f325083f00d32c0e02c710d8dfca93debef5dc8ff862265b0ee6c510923df9dad5114656761a4e62229aa05b66a2f12929c3ee28c209b73b2b1754"
+        },
+      {
+        msg: "Somewhere in the universe, we already said yes 🌸",
+        img: "https://i.pinimg.com/736x/0b/db/6f/0bdb6f82d7df1daab566aea417f3308d.jpg"
+      },
+      { msg: "Okay but… imagine us laughing together 😌💗",
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-bJ33wJ2B1GGukKbijWcOuujuXrbVLlS-JA&s"
+      },
+       { msg: "My heart is still choosing you 💖🐾",
+        img: "https://i.pinimg.com/originals/be/d5/58/bed5585ed4e8cf5638a0397b8098c957.jpg"
+       },
+      { msg: "Just saying… I’d make a great Valentine 🌹😺",
+        img: "https://i.pinimg.com/736x/c6/06/ab/c606ab7cc088c7764eda1c67116a6121.jpg"
+      },
+      {msg: "No pressure… but I’d really love that 🥰💘",
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAsr9lgRtbosdF0Pc1f8XHiLU05hnEAsTT4Q&s"
+      }
+      
+    ];
+
+    let index = 0;
+
+    const catImg = document.getElementById("catImg");
+    const message = document.getElementById("message");
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
+
+    noBtn.addEventListener("click", () => {
+              if (index < steps.length) {
+                  catImg.src = steps[index].img;
+                  message.textContent = steps[index].msg;
+
+                  // Yes gets warmer
+                 const totalSteps = steps.length; // 10
+      const maxYesWidth = 100; // percent
+
+      if (index < totalSteps - 1) {
+          // Step 1–9: grow YES gradually
+          const yesWidth = 240 + index * 30; // px growth
+          yesBtn.style.width = yesWidth + "px";
+
+          // NO button soft fade
+          const noScale = Math.max(1 - index * 0.04, 0.6);
+          noBtn.style.transform = `scale(${noScale})`;
+          noBtn.style.opacity = Math.max(1 - index * 0.15, 0.3);
+      } else {
+          // Step 10: final state
+          yesBtn.style.width = "70%";
+          noBtn.style.display = "none";
+      }
+
+            index++;
+        }
+    });
+    yesBtn.addEventListener("click", () => {
+        const audio = document.getElementById("happyCatAudio");
+
+        // Play happy cat song
+        audio.currentTime = 0;
+        audio.play();
+
+        document.querySelector(".card").innerHTML = `
+            <h1>Yayyy! 💖</h1>
+            <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/3f4ec842-6f7a-4d31-ab32-a35b7c42e7d8/dgvd6bj-d8c21830-800a-4642-954f-249381540aae.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiIvZi8zZjRlYzg0Mi02ZjdhLTRkMzEtYWIzMi1hMzViN2M0MmU3ZDgvZGd2ZDZiai1kOGMyMTgzMC04MDBhLTQ2NDItOTU0Zi0yNDkzODE1NDBhYWUuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.B8PYC_aocVtCbMKU22iwuKZVLU515Aw1Ny4Km1_qjf4">
+            <p class="message">
+                <a href="https://www.instagram.com/00thirt13n?igsh=cmQ5OXU1Mndzc3M3" target="_blanck">I'm</a> very happy now 😻🌹<br>
+                Happy Valentine’s Day!
+            </p>
+        `;
+    });
+
+</script>
+
+</body>
+</html>
